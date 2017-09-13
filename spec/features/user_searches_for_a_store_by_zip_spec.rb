@@ -6,7 +6,7 @@ RSpec.describe "User searches for a store by zipcode and" do
     # When I visit "/"
     visit '/'
     # And I fill in a search box with "80202" and click "search"
-    fill_in "q", with: 80202
+    fill_in "zip", with: 80202
     click_on "Search"
     # Then my current path should be "/search" (ignoring params)
     expect(current_path).to eq "/search"

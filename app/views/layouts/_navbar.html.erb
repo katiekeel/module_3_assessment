@@ -21,8 +21,8 @@
       </li>
       <li>
         <%= form_tag("/search", method: "get") do %>
-          <%= label_tag(:q, "Search for:") %>
-          <%= text_field_tag(:q) %>
+          <%= label_tag(:zip, "Search for:") %>
+          <%= text_field_tag(:zip) %>
           <%= submit_tag("Search") %>
         <% end %>
       </li>
