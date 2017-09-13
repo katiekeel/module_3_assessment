@@ -14,7 +14,6 @@ gem "less-rails-bootstrap"
 gem "minitest-rails"
 gem 'figaro'
 gem 'faraday'
-gem 'database_cleaner'
 gem 'active_model_serializers'
 
 group :development do
@@ -30,4 +29,5 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'vcr'
+  gem 'database_cleaner'
 end
