@@ -10,7 +10,7 @@ class Store
     @name = raw_store[:name].titleize
     @city = raw_store[:city]
     @distance = raw_store[:distance]
-    @phone_number = raw_store[:phone_number]
+    @phone_number = raw_store[:phone]
     @type = raw_store[:storeType]
   end
 

@@ -1,9 +1,9 @@
 <h1><%= @stores.count %> Stores for 80202</h1>
 
 <ol>
-  <% @stores.each do |store| %>
+  <% @stores[0..9].each do |store| %>
   <li>
-    <h3 id="store"><%= store.name %></h3>
+    <h3><%= store.name %></h3>
     <h4><%= store.city %></h4>
     <p><%= store.distance %> Miles Away</p>
     <p>Phone: <%= store.phone_number %></p>

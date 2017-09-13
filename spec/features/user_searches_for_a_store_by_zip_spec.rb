@@ -15,13 +15,22 @@ RSpec.describe "User searches for a store by zipcode and" do
     VCR.use_cassette("api/v1/requests/user_searches_for_a_store_by_zip_spec.rb") do
       expect(page).to have_content("17 Stores for 80202")
       # And I should see exactly 10 results
-      expect(page).to have_css('store', count: 10)
+      expect(page).to have_selector('ol li', count: 10)
       # And I should see the long name, city, distance, phone number and store type for each of the 10 results
       expect(page).to have_content("Cherry Creek Mall")
 
-      response = BestBuyService.find_by_zip(80202, 25)
+      response = BestBuyService.find_by_zip(80202, 25)[:stores][0..9]
 
-      expect(page).to have response.first.name
+      expect(page).to have_content response.first[:name].titleize
+      expect(page).to have_content response.last[:name].titleize
+      expect(page).to have_content response.first[:city]
+      expect(page).to have_content response.last[:city]
+      expect(page).to have_content "#{response.first[:distance]} Miles Away"
+      expect(page).to have_content "#{response.last[:distance]} Miles Away"
+      expect(page).to have_content "Phone: #{response.first[:phone]}"
+      expect(page).to have_content "Phone: #{response.last[:phone]}"
+      expect(page).to have_content "Store Type: #{response.first[:storeType]}"
+      expect(page).to have_content "Store Type: #{response.last[:storeType]}"
     end
   end
 end
